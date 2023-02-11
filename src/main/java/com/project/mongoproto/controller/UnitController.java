@@ -23,8 +23,8 @@ public class UnitController {
     }
 
     @GetMapping("/save")
-    public UnitSchema saveUnit() throws InvalidProtocolBufferException {
-        Token token = Token.newBuilder().setId(Id.newBuilder().setU32(1113).setU64(1113).setKey("unitKeyToken-3").build()).build();
+    public String saveUnit() throws InvalidProtocolBufferException {
+        Token token = Token.newBuilder().setId(Id.newBuilder().setU32(1117).setU64(1117).setKey("unitKeyToken-7").build()).build();
         UnitSchema unitSchema = UnitSchema.newBuilder().setUnitSchemaToken(token)
                 .setName(Name.newBuilder().putName("weight", NameInLanguage.newBuilder()
                         .setCanonical("Canonical-weight").build()).build()).build();

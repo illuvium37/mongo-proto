@@ -15,10 +15,11 @@ public class UnitService {
     }
 
 
-    public UnitSchema saveUnit(Unit unit) throws InvalidProtocolBufferException {
+    public String saveUnit(Unit unit) throws InvalidProtocolBufferException {
         unit.setProto(unit.getUnitSchemaProto().toByteArray());
         Unit savedUnit = unitRepository.save(unit);
-        return UnitSchema.parseFrom(savedUnit.getProto());
+        savedUnit.setUnitSchemaProto(UnitSchema.parseFrom(savedUnit.getProto()));
+        return savedUnit.toString();
     }
 
 }
