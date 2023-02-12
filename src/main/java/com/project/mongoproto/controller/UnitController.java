@@ -8,7 +8,7 @@ import com.telos.core.base.Name;
 import com.telos.core.base.NameInLanguage;
 import com.telos.core.base.Token;
 import com.telos.core.quantity.UnitSchema;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +22,9 @@ public class UnitController {
         this.unitService = unitService;
     }
 
-    @GetMapping("/save")
-    public String saveUnit() throws InvalidProtocolBufferException {
-        Token token = Token.newBuilder().setId(Id.newBuilder().setU32(1117).setU64(1117).setKey("unitKeyToken-7").build()).build();
+    @PostMapping("/save")
+    public Unit saveUnit() throws InvalidProtocolBufferException {
+        Token token = Token.newBuilder().setId(Id.newBuilder().setU32(1111).setU64(1111).setKey("unitKeyToken-1").build()).build();
         UnitSchema unitSchema = UnitSchema.newBuilder().setUnitSchemaToken(token)
                 .setName(Name.newBuilder().putName("weight", NameInLanguage.newBuilder()
                         .setCanonical("Canonical-weight").build()).build()).build();
@@ -32,4 +32,5 @@ public class UnitController {
         unit.setUnitSchemaProto(unitSchema);
         return unitService.saveUnit(unit);
     }
+
 }
